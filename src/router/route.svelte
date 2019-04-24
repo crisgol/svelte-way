@@ -8,7 +8,7 @@
     export let path;
 
     let structureParts = path.split("/");
-        structureParts.splice(0, 1);
+    structureParts.splice(0, 1);
 
     for (let i = 0; i < structureParts.length; i++) {
         const part = structureParts[i];
