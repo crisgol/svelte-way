@@ -38,7 +38,10 @@
 
 <ul>
 	<li>
-        <Link path="/home">Home</Link>    
+        <Link path="/">Index</Link>
+    </li>
+	<li>
+        <Link path="/home">Home</Link>
     </li>
 	<li>
         <Link path="/about">About</Link>

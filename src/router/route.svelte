@@ -1,14 +1,25 @@
 <script>
     import { Router } from "./router";
-    import { onMount } from "svelte";
+    import { onMount, getContext } from "svelte";
+    import { get } from 'svelte/store';
 
     let params = {};
     let finalParams = {};
 
     export let path;
+    export let exact = false;
+
+    let switchResolver = false;
+
+    const inSwitch = getContext("switch") !== undefined;
+
+    let resolved = false;
+
+    if (inSwitch) {
+        resolved = getContext("switch").activeRoutePath;
+    }
 
     let structureParts = path.split("/");
-    structureParts.splice(0, 1);
 
     for (let i = 0; i < structureParts.length; i++) {
         const part = structureParts[i];
@@ -21,7 +32,7 @@
     function match(structure, params, path) {
         finalParams = {};
         const pathParts = path.split("/");
-        pathParts.splice(0, 1);
+        let atLeastOneOk = false;
 
         for (let i = 0; i < structure.length; i++) {
             const part = pathParts[i];
@@ -31,20 +42,50 @@
             if (part !== structure[i]) {
 
                 if (params[i] === undefined) {
-                    return false;
+                    return !exact && atLeastOneOk;
                 } else {
-                    finalParams[params[i]] = part;
+
+                    if (part === "") return false;
+
+                    finalParams[params[i]] = decodeURI(part);
                 }
 
+            } else {
+                if (part !== "") {
+                    atLeastOneOk = true;
+                }
             }
 
+        }
+
+        if (exact) {
+            return structure.length === pathParts.length;
         }
 
         return true;
     }
 
+    function routeMach(structure, params, routerPath) {
+
+        if (inSwitch) {
+            if (get(resolved) !== false && path !== get(resolved)) {
+                return false;
+            }
+        }
+
+        const result = match(structure, params, routerPath);
+        
+        if (result && inSwitch) {
+            if (!get(resolved)) {
+                getContext("switch").resolve(path);
+            }
+        }
+
+        return result;
+    }
+
 </script>
 
-{#if match(structureParts, params, $Router)}
+{#if routeMach(structureParts, params, $Router)}
     <slot params={finalParams}/>
 {/if}
