@@ -1,6 +1,5 @@
 <script>
-    import {Router} from "./router/router";
-    import Link from "./router/link.svelte";
+    import {Link} from "../../src";
 </script>
 
 <style>

@@ -1,7 +1,7 @@
 <script>
     import { setContext } from "svelte";
-    import { Router } from "./router"
     import { writable } from "svelte/store";
+    import { Router } from "../router"
 
     let activeRoutePath = writable(false);
 

@@ -1,5 +1,5 @@
 <script>
-    import {Router} from "./router";
+    import {Router} from "../router";
 
     export let path;
 
@@ -7,7 +7,6 @@
         e.preventDefault();
         Router.go(path);
     }
-
 </script>
 
 <a on:click={handleClick} class:active={$Router === path} href={path}>

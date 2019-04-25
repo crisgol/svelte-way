@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte";
-    import { Router } from "./router"
+    import { Router } from "../router"
 
     export let path;
 

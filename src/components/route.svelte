@@ -1,19 +1,17 @@
 <script>
-    import { Router } from "./router";
-    import { onMount, getContext } from "svelte";
     import { get } from 'svelte/store';
-
-    let params = {};
-    let finalParams = {};
+    import { onMount, getContext } from "svelte";
+    import { Router } from "../router";
 
     export let path;
     export let exact = false;
 
-    let switchResolver = false;
-
-    const inSwitch = getContext("switch") !== undefined;
+    let structureParams = {};
+    let params = {};
 
     let resolved = false;
+
+    const inSwitch = getContext("switch") !== undefined;
 
     if (inSwitch) {
         resolved = getContext("switch").activeRoutePath;
@@ -25,12 +23,12 @@
         const part = structureParts[i];
 
         if (part.charAt(0) === ":") {
-            params[i] = part.substr(1, part.length);
+            structureParams[i] = part.substr(1, part.length);
         }
     }
 
-    function match(structure, params, path) {
-        finalParams = {};
+    function match(structure, structureParams, path) {
+        params = {};
         const pathParts = path.split("/");
         let atLeastOneOk = false;
 
@@ -41,13 +39,13 @@
 
             if (part !== structure[i]) {
 
-                if (params[i] === undefined) {
+                if (structureParams[i] === undefined) {
                     return !exact && atLeastOneOk;
                 } else {
 
                     if (part === "") return false;
 
-                    finalParams[params[i]] = decodeURI(part);
+                    params[structureParams[i]] = decodeURI(part);
                 }
 
             } else {
@@ -65,7 +63,7 @@
         return true;
     }
 
-    function routeMach(structure, params, routerPath) {
+    function routeMach(structure, structureParams, routerPath) {
 
         if (inSwitch) {
             if (get(resolved) !== false && path !== get(resolved)) {
@@ -73,7 +71,7 @@
             }
         }
 
-        const result = match(structure, params, routerPath);
+        const result = match(structure, structureParams, routerPath);
         
         if (result && inSwitch) {
             if (!get(resolved)) {
@@ -86,6 +84,6 @@
 
 </script>
 
-{#if routeMach(structureParts, params, $Router)}
-    <slot params={finalParams}/>
+{#if routeMach(structureParts, structureParams, $Router)}
+    <slot params={params}/>
 {/if}

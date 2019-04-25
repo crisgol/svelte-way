@@ -1,10 +1,6 @@
 <script>
-	import { onMount } from "svelte";
-	import Route from "../router/route.svelte";
-	import Switch from "../router/switch.svelte";
-	import Redirect from "../router/redirect.svelte";
-	import Menu from "../menu.svelte";
-	import {Router} from "../router/router";
+	import Menu from "../components/menu.svelte";
+	import {Switch, Route, Router} from "../../src";
 </script>
 
 <h4>Route -> {$Router}</h4>
