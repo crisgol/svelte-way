@@ -3,7 +3,7 @@
     import { onMount, getContext } from "svelte";
     import { Router } from "../router";
 
-    export let path;
+    export let path = "";
     export let exact = false;
 
     let structureParams = {};
@@ -30,6 +30,9 @@
 
     function match(structure, structureParams, path) {
         params = {};
+
+        if (path === "") return true;
+
         const pathParts = path.split("/"); // TODO: move this to the router. Splitting it in every route is inefficient.
         let atLeastOneOk = false;
 

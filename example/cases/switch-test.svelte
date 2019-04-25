@@ -28,7 +28,7 @@
 		<h1>User with id: #{params.id} -> {params.section}</h1>
 	</Route>
 
-	<Route path="/:user" let:params>
-		<h1>User -> {params.user}</h1>
+	<Route>
+		<h1>404</h1>
 	</Route>
 </Switch>
