@@ -17,6 +17,7 @@
         resolved = getContext("switch").activeRoutePath;
     }
 
+    // TODO: run this on every route path change.
     let structureParts = path.split("/");
 
     for (let i = 0; i < structureParts.length; i++) {
@@ -29,7 +30,7 @@
 
     function match(structure, structureParams, path) {
         params = {};
-        const pathParts = path.split("/");
+        const pathParts = path.split("/"); // TODO: move this to the router. Splitting it in every route is inefficient.
         let atLeastOneOk = false;
 
         for (let i = 0; i < structure.length; i++) {
@@ -63,7 +64,7 @@
         return true;
     }
 
-    function routeMach(structure, structureParams, routerPath) {
+    function routeMatch(structure, structureParams, routerPath) {
 
         if (inSwitch) {
             if (get(resolved) !== false && path !== get(resolved)) {
@@ -84,6 +85,6 @@
 
 </script>
 
-{#if routeMach(structureParts, structureParams, $Router)}
+{#if routeMatch(structureParts, structureParams, $Router)}
     <slot params={params}/>
 {/if}
