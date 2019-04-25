@@ -1,5 +1,5 @@
 {
-  "name": "rightpath",
+  "name": "svelte-way",
   "version": "1.0.0",
   "peerDependencies": {
     "svelte": "3.0.1"

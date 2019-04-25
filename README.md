@@ -1,5 +1,5 @@
 # Svelte Way
-Svelte Way is small SPA router for Svelte 3.
+**Svelte Way** is small SPA router for [Svelte 3](https://svelte.dev/). Inspired by [React Router](https://reacttraining.com/react-router/web/guides/quick-start).
 
 ## Usage
 
