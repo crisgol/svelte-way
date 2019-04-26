@@ -46,9 +46,9 @@
         <Link path="/about">About</Link>
     </li>
 	<li>
-        <Link path="/user/12">Patrik Smělý</Link>
+        <Link path="/user/12">User 12</Link>
     </li>
 	<li>
-        <Link path="/user/12/info">Patrik Smělý -> info</Link>
+        <Link path="/user/12/info">User 12 -> info</Link>
     </li>
 </ul>
