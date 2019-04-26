@@ -4,7 +4,7 @@
   "main": "./src/index.js",
   "description": "Svelte Way is small SPA router for Svelte 3. Inspired by React Router.",
   "author": "Patrik Smělý <sogocze1@gmail.com> (http://sogocze.cz)",
-  "version": "1.0.2",
+  "version": "1.0.21",
   "license": "MIT",
   "keywords": ["svelte", "javascript", "router", "svelte-v3", "single-page-applications"],
   "repository": {
