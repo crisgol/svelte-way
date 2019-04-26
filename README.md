@@ -25,12 +25,6 @@ Main component for routing. Childs are rendered if route prop path match url.
 #### Example usage
 
 ```html
-<Route path="/">
-  <h1>Index route</h1>
-</Route>
-```
-
-```html
 <Route path="/home">
   <h1>Home</h1>
 </Route>
@@ -40,6 +34,71 @@ Main component for routing. Childs are rendered if route prop path match url.
 <Route path="/user/:id" let:params>
   <h1>User #{params.id}</h1>
 </Route>
+```
+
+### Link
+
+Component for navigation links.
+
+#### Props
+
+- ```path``` url to link to (string).
+- ```activeClass``` class for active state (string, default: active).
+
+#### Example usage
+
+```html
+<Link path="/home">Home</Link>
+```
+
+### Redirect
+
+After mount redirect component will redirect to the specified path.
+
+#### Props
+
+- ```path``` url to redirect to (string).
+
+#### Example usage
+
+```html
+<Route exact path="/home">
+  <Redirect path="/" />
+</Rout
+```
+
+### Switch
+
+Renders the first Route component that matches URL.
+
+#### Example usage
+
+```html
+<Switch>
+  <Route exact path="/">
+    <h1>Home</h1>
+  </Route>
+
+  <Route exact path="/home">
+    <Redirect path="/" />	
+  </Route>
+
+  <Route exact path="/about">
+    <h1>About</h1>
+  </Route>
+
+  <Route exact path="/user/:id" let:params>
+    <h1>User with id: #{params.id}</h1>
+  </Route>
+
+  <Route exact path="/user/:id/:section" let:params>
+    <h1>User with id: #{params.id} -> {params.section}</h1>
+  </Route>
+
+  <Route>
+    <h1>404</h1>
+  </Route>
+</Switch>
 ```
 
 ## Roadmap:
