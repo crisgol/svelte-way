@@ -1,5 +1,5 @@
 <img alt="Svelte Way is small SPA router for Svelte 3. Inspired by React Router.
-" src="https://github.com/SogoCZE/svelte-way/blob/master/public/github.svg">
+" src="https://www.sogocze.cz/github.svg">
 
 **Svelte Way** is small SPA router for [Svelte 3](https://svelte.dev/). Inspired by [React Router](https://github.com/ReactTraining/react-router).
 
