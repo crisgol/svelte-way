@@ -8,15 +8,15 @@
 <Menu/>
 
 <Switch>
-	<Route path="/">
+	<Route exact path="/">
 		<h1>Index</h1>
 	</Route>
 
-	<Route path="/home">
+	<Route exact path="/home">
 		<h1>Home</h1>
 	</Route>
 
-	<Route path="/about">
+	<Route exact path="/about">
 		<h1>About</h1>
 	</Route>
 
