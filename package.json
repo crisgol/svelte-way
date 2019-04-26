@@ -1,5 +1,9 @@
 {
   "name": "svelte-way",
+  "bugs": "https://github.com/SogoCZE/svelte-way/issues",
+  "main": "./src/index.js",
+  "description": "Svelte Way is small SPA router for Svelte 3. Inspired by React Router.",
+  "author": "Patrik Smělý <sogocze1@gmail.com> (http://sogocze.cz)",
   "version": "1.0.0",
   "peerDependencies": {
     "svelte": "3.0.1"
@@ -16,6 +20,7 @@
   },
   "scripts": {
     "build": "rollup -c",
+    "ship-it": "npm publish",
     "autobuild": "rollup -c -w",
     "dev": "run-p start:dev autobuild",
     "start:dev": "browser-sync public --single --dev -w --no-ghost-mode"
