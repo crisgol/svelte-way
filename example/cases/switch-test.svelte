@@ -1,6 +1,6 @@
 <script>
 	import Menu from "../components/menu.svelte";
-	import {Switch, Route, Router} from "../../src";
+	import {Switch, Route, Router, Redirect} from "../../src";
 </script>
 
 <h4>Route -> {$Router}</h4>
@@ -9,11 +9,11 @@
 
 <Switch>
 	<Route exact path="/">
-		<h1>Index</h1>
+		<h1>Home</h1>
 	</Route>
 
 	<Route exact path="/home">
-		<h1>Home</h1>
+		<Redirect path="/" />	
 	</Route>
 
 	<Route exact path="/about">

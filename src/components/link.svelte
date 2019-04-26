@@ -2,6 +2,7 @@
     import {Router} from "../router";
 
     export let path;
+    export let activeClass = "active";
 
     function handleClick(e) {
         e.preventDefault();
@@ -9,6 +10,6 @@
     }
 </script>
 
-<a on:click={handleClick} class:active={$Router === path} href={path}>
+<a on:click={handleClick} class={$Router === path ? activeClass : ""} href={path}>
     <slot/>
 </a>
